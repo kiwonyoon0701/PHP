@@ -1,5 +1,6 @@
 **APACHE PHP MYSQL Install**
 
+```
 root@ip-172-31-1-203:/root# apt-get install apache2
 root@ip-172-31-1-203:/root# apt-get install php
 
@@ -8,9 +9,12 @@ root@ip-172-31-1-203:/root# apt-get install php-mysql;
 
 root@ip-172-31-1-203:/root# apt-get install libapache2-mod-php
 root@ip-172-31-1-203:/root# service apache2 restart;
+```
+
 
 **Apache Daemon Check**
 
+```
 root@ip-172-31-1-203:/root# netstat -an |grep 80
 tcp        0      0 172.31.1.203:56254      13.124.245.230:80       TIME_WAIT  
 tcp        0      0 172.31.1.203:38902      13.124.255.209:80       TIME_WAIT  
@@ -24,21 +28,30 @@ apache2   12599 www-data    4u  IPv6  33574      0t0  TCP *:80 (LISTEN)
 apache2   12600 www-data    4u  IPv6  33574      0t0  TCP *:80 (LISTEN)
 apache2   12601 www-data    4u  IPv6  33574      0t0  TCP *:80 (LISTEN)
 apache2   12602 www-data    4u  IPv6  33574      0t0  TCP *:80 (LISTEN)
+```
+
 
 **Check Public Hostname**
 
+```
 root@ip-172-31-1-203:/root# curl http://169.254.169.254/latest/meta-data/public-hostname
 ec2-3-34-139-59.ap-northeast-2.compute.amazonaws.com
+```
+
 
 **Check HTTP Connectiong from Client**
 
+```
 root@ip-172-31-0-254:/root# curl http://ec2-3-34-139-59.ap-northeast-2.compute.amazonaws.com
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 ....
+```
+
 
 **Connection Check From PHP Server to RDS MariaDB**
 
+```
 root@ip-172-31-1-203:/root# mysql -uadmin -hmysql.cf89zyffo8dr.ap-northeast-2.rds.amazonaws.com -p -e "show databases";
 Enter password: 
 +--------------------+
@@ -50,9 +63,12 @@ Enter password:
 | performance_schema |
 | sales              |
 +--------------------+
+```
+
 
 **Create New Database to Check PHP Connection**
 
+```
 root@ip-172-31-1-203:/root# cat /root/sql/sample.sql 
 CREATE database SCOTT;
 
@@ -130,15 +146,19 @@ INSERT INTO `SALGRADE` (`GRADE`, `LOSAL`, `HISAL`) VALUES
 
 ALTER TABLE `EMP`
   ADD CONSTRAINT `PK_EMP` FOREIGN KEY (`DEPTNO`) REFERENCES `DEPT` (`DEPTNO`) ON DELETE SET NULL ON UPDATE CASCADE;
+```
 
 
 **Insert SCOTT Sample Data into SCOT Database in RDS MariaDB**
 
+```
 root@ip-172-31-1-203:/root# mysql -uadmin -hmysql.cf89zyffo8dr.ap-northeast-2.rds.amazonaws.com -p < /root/sql/sample.sql 
+```
 
 
 **Create Sample PHP page to use RDS Connection**
 
+```
 root@ip-172-31-1-203:/var/www/html# cat dbconn.php 
 <!DOCTPYE>
 <html>
@@ -159,9 +179,12 @@ while($row=mysqli_fetch_assoc($result)){
 ?>
    </body>
 </html>
+```
+
 
 **Check dbconn.php connection From Client**
 
+```
 root@ip-172-31-0-254:/root# curl http://ec2-3-34-139-59.ap-northeast-2.compute.amazonaws.com/dbconn.php
 <!DOCTPYE>
 <html>
@@ -169,3 +192,6 @@ root@ip-172-31-0-254:/root# curl http://ec2-3-34-139-59.ap-northeast-2.compute.a
 <body>
 <li>SMITH 7369</li><li>ALLEN 7499</li><li>WARD 7521</li><li>JONES 7566</li><li>MARTIN 7654</li><li>BLAKE 7698</li><li>CLARK 7782</li><li>SCOTT 7788</li><li>KING 7839</li><li>TURNER 7844</li><li>ADAMS 7876</li><li>JAMES 7900</li><li>FORD 7902</li><li>MILLER 7934</li>   </body>
 </html>
+```
+
+<kbd> ![GitHub Logo](images/output1.png) </kbd>
