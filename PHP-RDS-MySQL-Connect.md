@@ -10,8 +10,8 @@ root@ip-172-31-1-203:/root# apt-get install php-mysql
 root@ip-172-31-1-203:/root# apt-get install libapache2-mod-php
 root@ip-172-31-1-203:/root# service apache2 restart
 ```
-   
-   
+
+
 **Apache Daemon Check**
 
 ```
