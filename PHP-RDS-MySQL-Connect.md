@@ -52,7 +52,7 @@ root@ip-172-31-0-254:/root# curl http://ec2-3-34-139-59.ap-northeast-2.compute.a
 **Connection Check From PHP Server to RDS MariaDB**
 
 ```
-root@ip-172-31-1-203:/root# mysql -uadmin -hmysql.cf89zyffo8dr.ap-northeast-2.rds.amazonaws.com -p -e "show databases";
+root@ip-172-31-1-203:/root# mysql -uadmin -hmysql.cf89XXXXXXXX.ap-northeast-2.rds.amazonaws.com -p -e "show databases";
 Enter password: 
 +--------------------+
 | Database           |
@@ -152,7 +152,7 @@ ALTER TABLE `EMP`
 **Insert SCOTT Sample Data into SCOT Database in RDS MariaDB**
 
 ```
-root@ip-172-31-1-203:/root# mysql -uadmin -hmysql.cf89zyffo8dr.ap-northeast-2.rds.amazonaws.com -p < /root/sql/sample.sql 
+root@ip-172-31-1-203:/root# mysql -uadmin -hmysql.cf89XXXXXXXX.ap-northeast-2.rds.amazonaws.com -p < /root/sql/sample.sql 
 ```
 
 
