@@ -165,8 +165,8 @@ root@ip-172-31-1-203:/var/www/html# cat dbconn.php
  <head><meta charset="utf-8"></head>
 <body>
 <?php
-$write = mysqli_connect("mysql.cf89zyffo8dr.ap-northeast-2.rds.amazonaws.com","admin","DB-PASSWORD","SCOTT");
-$read = mysqli_connect("mysql.cf89zyffo8dr.ap-northeast-2.rds.amazonaws.com","admin","DB-PASSWORD","SCOTT");
+$write = mysqli_connect("mysql.cf89XXXXXXXX.ap-northeast-2.rds.amazonaws.com","admin","DB-PASSWORD","SCOTT");
+$read = mysqli_connect("mysql.cf89XXXXXXXX.ap-northeast-2.rds.amazonaws.com","admin","DB-PASSWORD","SCOTT");
 
 $sql="SELECT ENAME, EMPNO FROM EMP order by 2";
 $result=mysqli_query($read,$sql);
